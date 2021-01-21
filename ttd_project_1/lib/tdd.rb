@@ -18,4 +18,31 @@ class Array
     pairs
   end
 
+  def my_transpose
+    outer = []
+    (0...self.length).each do |i|
+      inner = [] 
+      (0...self.length).each do |j|
+        inner << self[j][i]
+      end 
+      outer << inner
+    end 
+    outer
+  end 
+
+  def stock_picker
+    max = 0
+    pairs = []
+    (0...self.length-1).each do |buy|
+      (0+1...self.length).each do |sell|
+        profit = self[sell] - self[buy] 
+        if profit > max 
+          max = profit
+          pairs = [buy, sell]
+        end 
+      end 
+    end 
+    pairs 
+  end 
+
 end
